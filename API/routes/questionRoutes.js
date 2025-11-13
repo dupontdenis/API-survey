@@ -12,11 +12,6 @@ import { validateQuestion } from "../middleware/validateQuestion.js";
 
 const router = Router();
 
-// Route to get all unique categories
-router.get("/categories", (req, res) => {
-  res.json(getCategories());
-});
-
 router
   .route("/questions")
   .get(getQuestions)
