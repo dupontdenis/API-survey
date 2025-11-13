@@ -1,0 +1,44 @@
+
+### Update a survey question (PUT)
+PUT http://localhost:3000/API/survey/questions/1
+Content-Type: application/json
+
+{
+  "question": "À quelle fréquence faites-vous de l'exercice ?",
+  "choices": ["Jamais", "Parfois", "Souvent"],
+  "score": [0, 2, 4]
+}
+
+### Delete a survey question (DELETE)
+DELETE http://localhost:3000/API/survey/questions/1
+### Get all survey questions
+GET http://localhost:3000/API/survey/questions
+
+
+
+### Get a specific survey question by id
+GET http://localhost:3000/API/survey/questions/1
+
+### Add a new survey question
+POST http://localhost:3000/API/survey/questions
+Content-Type: application/json
+
+{
+  "question": "Combien d'heures dormez-vous par nuit en moyenne ?",
+  "choices": ["Moins de 6h", "6 à 8h", "Plus de 8h"],
+  "score": [1, 3, 5]
+}
+
+### Submit survey answers
+POST http://localhost:3000/API/survey/submit
+Content-Type: application/json
+
+{
+  "responses": [
+  { "id": 1, "response": "Parfois" },
+  { "id": 2, "response": "6 à 8h" },
+  { "id": 3, "response": "Tous les jours" }
+  ]
+}
+
+
