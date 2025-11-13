@@ -1,3 +1,30 @@
+# How the Frontend Works & Score Computation
+
+The frontend is a minimal web app that interacts with the API using JavaScript (see `public/js/app.mjs`).
+
+**How it works:**
+
+- On page load, it fetches all questions from `/API/survey/questions` and displays them as a form with radio buttons for each choice.
+- When the user submits the form, it collects the selected answers and sends them as an array of `{ id, response }` objects to `/API/survey/submit`.
+- The backend computes the score and returns a final lifestyle message, which is displayed to the user.
+
+**How the score is computed:**
+
+1. Each question has a hidden `score` array, with a score for each possible answer.
+2. When a user submits their responses, the backend receives an array of `{ id, response }` objects.
+3. For each question:
+
+- The backend finds the user’s selected answer.
+- It looks up the corresponding score for that answer.
+- It adds this score to the total.
+- It also adds the maximum possible score for that question to a running max.
+
+4. The final score is the sum of the selected answers’ scores.
+5. The backend then calculates the percentage: `(totalScore / maxScore) * 100`.
+6. Based on the percentage, a final message is selected and returned to the user.
+
+This logic is handled in the `score` and `finalAnswer` functions in your backend.
+
 # Lifestyle Survey API
 
 This project is a simple RESTful API for a "Lifestyle Survey" (QCM-like) application, built with Node.js and Express. It allows you to manage survey questions and submit user responses to receive a lifestyle assessment.

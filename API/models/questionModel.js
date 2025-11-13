@@ -109,12 +109,27 @@ export function remove(id) {
   return true;
 }
 
+/**
+ * Computes the user's total score and the maximum possible score for the survey.
+ *
+ * @param {Array<{id: number, response: string}>} responses - Example:
+ *   [
+ *     { id: 1, response: "Sometimes" },
+ *     { id: 2, response: "6 to 8h" },
+ *     { id: 3, response: "Every day" },
+ *     { id: 4, response: "No" },
+ *     { id: 5, response: "Never" }
+ *   ]
+ * @returns {{ score: number, max: number }}
+ *   Example output: { score: 2+3+6+5+5 = 21, max: 4+5+6+5+5 = 25 }
+ */
 export function score(responses) {
   // Use a single reduce to compute both score and max
   const result = Survey.questions.reduce(
     (acc, q) => {
       // Find user response for this question
       const userResp = responses.find((r) => r.id === q.id);
+      // give explicit check for userResp to avoid errors
       if (userResp) {
         const idx = q.choices.indexOf(userResp.response);
         if (idx !== -1) {
