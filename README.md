@@ -53,4 +53,10 @@ The model file defines several methods to keep the logic organized and maintaina
 
 ## License
 
-MIT
+MIT copirate SuperDupont
+
+## Advice for Students
+
+If you are using this project as part of your coursework or exam preparation, it is strongly recommended that you read, understand, and experiment with the code. Understanding how the filtering, scoring, and API logic work will help you succeed in exams and deepen your practical knowledge of JavaScript, Node.js, and RESTful APIs.
+
+> **Tip:** Try modifying the code, adding new features, or debugging issues to reinforce your learning!
