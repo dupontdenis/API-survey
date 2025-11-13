@@ -13,33 +13,33 @@ export const Survey = {
   questions: [
     {
       id: 1,
-      question: "À quelle fréquence faites-vous de l'exercice ?",
-      choices: ["Jamais", "Parfois", "Souvent"],
+      question: "How often do you exercise?",
+      choices: ["Never", "Sometimes", "Often"],
       score: [0, 2, 4],
     },
     {
       id: 2,
-      question: "Combien d'heures dormez-vous par nuit en moyenne ?",
-      choices: ["Moins de 6h", "6 à 8h", "Plus de 8h"],
+      question: "How many hours do you sleep on average per night?",
+      choices: ["Less than 6h", "6 to 8h", "More than 8h"],
       score: [1, 3, 5],
     },
     {
       id: 3,
-      question: "Consommez-vous des fruits et légumes chaque jour ?",
-      choices: ["Jamais", "Parfois", "Tous les jours"],
+      question: "Do you eat fruits and vegetables every day?",
+      choices: ["Never", "Sometimes", "Every day"],
       score: [0, 2, 6],
     },
     {
       id: 4,
-      question: "Fumez-vous ?",
-      choices: ["Oui", "Parfois", "Non"],
+      question: "Do you smoke?",
+      choices: ["Yes", "Sometimes", "No"],
       score: [2, 1, 5],
     },
   ],
   finalAnswers: [
-    "Faites un effort pour améliorer votre mode de vie.",
-    "Vous avez de bonnes habitudes, continuez ainsi !",
-    "Parfait, vous êtes un(e) sportif(ve) exemplaire !",
+    "Make an effort to improve your lifestyle.",
+    "You have good habits, keep it up!",
+    "Perfect, you are a model athlete!",
   ],
 };
 
