@@ -1,12 +1,12 @@
-// Minimal QCM frontend using fetch and modular JS
+// Minimal Survey frontend using fetch and modular JS
 const API_BASE = "/API/survey/questions";
 
 // Helper to get element by id
 const el = (id) => document.getElementById(id);
 
-// Render QCM questions using Bootstrap cards
+// Render Survey questions using Bootstrap cards
 function renderQuestions(questions) {
-  const container = el("qcm-container");
+  const container = el("survey-container");
   if (!questions || questions.length === 0) {
     container.innerHTML = '<p class="muted">No questions available.</p>';
     return;
@@ -44,9 +44,9 @@ function renderQuestions(questions) {
         const input = document.createElement("input");
         input.className = "form-check-input";
         input.type = "radio";
-        input.name = `qcm-${q.id}`;
+        input.name = `survey-${q.id}`;
         input.value = choice;
-        input.id = `qcm-${q.id}-choice-${cidx}`;
+        input.id = `survey-${q.id}-choice-${cidx}`;
 
         const label = document.createElement("label");
         label.className = "form-check-label";
@@ -67,11 +67,11 @@ function renderQuestions(questions) {
   container.appendChild(row);
 }
 
-// Handle QCM form submission: collect answers, POST to API, show score
-async function handleQcmSubmit(event) {
+// Handle Survey form submission: collect answers, POST to API, show score
+async function handleSurveySubmit(event) {
   event.preventDefault();
   const form = event.target;
-  // Find all unique question names (qcm-<id>)
+  // Find all unique question names (survey-<id>)
   const questionInputs = form.querySelectorAll('input[type="radio"]');
   const questionNames = Array.from(
     new Set(Array.from(questionInputs).map((i) => i.name))
@@ -80,7 +80,7 @@ async function handleQcmSubmit(event) {
   questionNames.forEach((name) => {
     const checked = form.querySelector(`input[name='${name}']:checked`);
     if (checked) {
-      const id = parseInt(name.replace("qcm-", ""));
+      const id = parseInt(name.replace("survey-", ""));
       responses.push({ id, response: checked.value });
     }
   });
@@ -105,7 +105,7 @@ async function handleQcmSubmit(event) {
 
 // Fetch questions from API and render
 async function fetchQuestions() {
-  const container = el("qcm-container");
+  const container = el("survey-container");
   try {
     const res = await fetch(API_BASE);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -119,8 +119,8 @@ async function fetchQuestions() {
 // On page load, fetch and display questions, categories, and wire up events
 document.addEventListener("DOMContentLoaded", () => {
   fetchQuestions();
-  const form = el("qcm-form");
+  const form = el("survey-form");
   if (form) {
-    form.addEventListener("submit", handleQcmSubmit);
+    form.addEventListener("submit", handleSurveySubmit);
   }
 });

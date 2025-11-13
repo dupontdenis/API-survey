@@ -35,6 +35,12 @@ export const Survey = {
       choices: ["Yes", "Sometimes", "No"],
       score: [2, 1, 5],
     },
+    {
+      id: 5,
+      question: "How often do you eat fast food?",
+      choices: ["Never", "Sometimes", "Often"],
+      score: [5, 2, 0],
+    },
   ],
   finalAnswers: [
     "Make an effort to improve your lifestyle.",
